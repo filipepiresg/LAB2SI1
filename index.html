@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app = "TODOList">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="libs/angular.js"></script>
+<head>
+	<title>TO DO List</title>
+</head>
+<header id="cabecalho">
+	<h2 style="margin: 0 0 15px 0; padding-top: 20PX">Todo List</h2>
+	<input type="text" ng-model="novaTarefa" placeholder="Digite sua tarefa...">
+	<button ng-click="addTarefa()">add</button>
+</header>
+<body id="corpo" ng-controller="listaCtrl">
+	<ul ng-repeat="tarefa in tarefas">
+		<li>{{tarefa.nome}}
+		<span ng-click="rmvTarefa($index)">&times;</span>
+		</li>
+	</ul>
+</body>
+<footer>
+	<h5 style="text-align: center;">Concluídas: {{(concluidas*100)/tarefas.length}} %</h5>
+	<button onclick="mudarCor()">random color</button>
+	<button onclick="mudarFonte()">random font</button>
+	<button ng-click="zerarLista()">clear list</button>
+</footer>
+<script src="js/main.js"></script>
+</html>
