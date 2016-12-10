@@ -32,12 +32,12 @@
 	</ul>
 	Quant. tarefas Não concluídas: {{tarefasNaoConcluidas.length}}
 </div>
-<footer>
+<div class="footer">
 	<h5 style="text-align: center;" >Concluídas (%): {{(tarefasConcluidas.length*100)/(tarefasConcluidas.length+tarefasNaoConcluidas.length)}}</h5>
 	<button onclick="mudarCor()">random color</button>
 	<button onclick="mudarFonte()">random font</button>
 	<button ng-click="zerarListas()">clear lists</button>
-</footer>
+</div>
 
 </body>
 <script src="js/main.js"></script>
