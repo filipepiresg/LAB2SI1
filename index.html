@@ -1,28 +1,44 @@
 <!DOCTYPE html>
-<html ng-app = "TODOList">
+<html ng-app="TODOList">
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/style2.css">
 <script src="libs/angular.js"></script>
 <head>
 	<title>TO DO List</title>
 </head>
 <header id="cabecalho">
-	<h2 style="margin: 0 0 15px 0; padding-top: 20PX">Todo List</h2>
+	<h1 style="margin: 0; padding: 20px 0 0 0">To-Do list</h1>
 	<input type="text" ng-model="novaTarefa" placeholder="Digite sua tarefa...">
 	<button ng-click="addTarefa()">add</button>
 </header>
 <body id="corpo" ng-controller="listaCtrl">
-	<ul ng-repeat="tarefa in tarefas">
-		<li>{{tarefa.nome}}
-		<span ng-click="rmvTarefa($index)">&times;</span>
+<div class="listaConcluida">
+	<ul ng-repeat="tarefa in tarefasConcluidas">
+		<li>
+		<span class="colocar" ng-click="mvTarefaConc($index)">&#10003;</span>
+		{{tarefa}}
+		<span class="retirar" ng-click="rmvTarefaConc($index)">&times;</span>
 		</li>
 	</ul>
-</body>
+	Quant tarefas concluidas: {{tarefasConcluidas.length}}
+</div>
+<div class="listaNaoConcluida">
+	<ul ng-repeat="tarefa in tarefasNaoConcluidas">
+		<li>
+		<span class="colocar" ng-click="mvTarefaNConc($index)">&#10003;</span>
+		{{tarefa}}
+		<span class="retirar" ng-click="rmvTarefaNConc($index)">&times;</span>
+		</li>
+	</ul>
+	Quant tarefas Nao concluidas: {{tarefasNaoConcluidas.length}}
+</div>
 <footer>
-	<h5 style="text-align: center;">Concluídas: {{(concluidas*100)/tarefas.length}} %</h5>
+	<h5 style="text-align: center;">Concluídas: {{(tarefasConcluidas.length*100)/(tarefasConcluidas.length+tarefasNaoConcluidas.length)}} %</h5>
 	<button onclick="mudarCor()">random color</button>
 	<button onclick="mudarFonte()">random font</button>
-	<button ng-click="zerarLista()">clear list</button>
+	<button ng-click="zerarListas()">clear lists</button>
 </footer>
-<script src="js/main.js"></script>
+
+</body>
+<script src="js/main2.js"></script>
 </html>

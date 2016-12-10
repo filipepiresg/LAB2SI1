@@ -1,40 +1,40 @@
 angular.module("TODOList", []);
 angular.module("TODOList").controller("listaCtrl", function ($scope) {
-	$scope.tarefas = [{nome: "Acordar", checked: true}, {nome: "Estudar", checked: true}, {nome: "Dormir", checked: false}];	
-	
-	$scope.numberConcluidas = function () {
-		var cont = 0;
-		for(var i = 0; i<$scope.tarefas.length; i++){
-			if($scope.tarefas[i].checked){
-				cont++;
-			}
-		}
-		return cont;
+	$scope.tarefasConcluidas = ["Acordar"];
+	$scope.tarefasNaoConcluidas = ["Estudar", "Dormir"];
+
+	$scope.rmvTarefaConc = function (index) {
+		$scope.tarefasConcluidas.splice(index, 1);
 	}
-
-	$scope.concluidas = $scope.numberConcluidas();
-
+	$scope.rmvTarefaNConc = function (index) {
+		$scope.tarefasNaoConcluidas.splice(index, 1);
+	}
+	$scope.mvTarefaConc = function(index){
+		var tarefa = $scope.tarefasConcluidas[index];
+		$scope.rmvTarefaConc(index);
+		$scope.tarefasNaoConcluidas.push(tarefa);
+	}
+	$scope.mvTarefaNConc = function(index){
+		var tarefa = $scope.tarefasNaoConcluidas[index];
+		$scope.rmvTarefaNConc(index);
+		$scope.tarefasConcluidas.push(tarefa);
+	}
 	$scope.addTarefa = function() {
 	 	var tarefa = $scope.novaTarefa;
-	 	if(!tarefa){
+	 	if(tarefa == null){
 	 		alert("Digite um nome para sua tarefa!");
 	 	} else {
-	 		$scope.tarefas.push({nome: tarefa, checked: false});
+	 		$scope.tarefasNaoConcluidas.push(tarefa);
 		}
 	 }
-	 $scope.rmvTarefa = function (index){
-	 	if($scope.tarefas[index].checked){
-	 		$scope.concluidas--;	
+	 $scope.zerarListas = function () {
+	 	for (var i = $scope.tarefasConcluidas.length - 1; i >= 0; i--) {
+	 		$scope.rmvTarefaConc(0);
 	 	}
-	 	$scope.tarefas.splice(index, 1);
-	 }
-
-	 $scope.zerarLista = function () {
-	 	for (var i = $scope.tarefas.length - 1; i >= 0; i--) {
-	 		$scope.rmvTarefa(i);
+	 	for (var i = $scope.tarefasNaoConcluidas.length - 1; i >= 0; i--) {
+	 		$scope.rmvTarefaNConc(0);
 	 	}
 	 }
-	 
 });
 
 function mudarCor() {
