@@ -25,6 +25,7 @@ angular.module("TODOList").controller("listaCtrl", function ($scope) {
 	 		alert("Digite um nome para sua tarefa!");
 	 	} else {
 	 		$scope.tarefasNaoConcluidas.push(tarefa);
+			$scope.novaTarefa = null;
 		}
 	 }
 	 $scope.zerarListas = function () {

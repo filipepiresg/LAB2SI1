@@ -7,7 +7,7 @@
 	<title>TO DO List</title>
 </head>
 <header id="cabecalho">
-	<h1 style="margin: 0; padding: 20px 0 0 0">To-Do list</h1>
+	<h1 style="margin: 0; padding: 20px 0 0 0; border: 1px">To-Do list</h1>
 	<input type="text" ng-model="novaTarefa" placeholder="Digite sua tarefa...">
 	<button ng-click="addTarefa()">add</button>
 </header>
@@ -20,7 +20,7 @@
 		<span class="retirar" ng-click="rmvTarefaConc($index)">&times;</span>
 		</li>
 	</ul>
-	Quant tarefas concluidas: {{tarefasConcluidas.length}}
+	Quant. tarefas concluídas: {{tarefasConcluidas.length}}
 </div>
 <div class="listaNaoConcluida">
 	<ul ng-repeat="tarefa in tarefasNaoConcluidas">
@@ -30,10 +30,10 @@
 		<span class="retirar" ng-click="rmvTarefaNConc($index)">&times;</span>
 		</li>
 	</ul>
-	Quant tarefas Nao concluidas: {{tarefasNaoConcluidas.length}}
+	Quant. tarefas Não concluídas: {{tarefasNaoConcluidas.length}}
 </div>
 <footer>
-	<h5 style="text-align: center;">Concluídas: {{(tarefasConcluidas.length*100)/(tarefasConcluidas.length+tarefasNaoConcluidas.length)}} %</h5>
+	<h5 style="text-align: center;" >Concluídas (%): {{(tarefasConcluidas.length*100)/(tarefasConcluidas.length+tarefasNaoConcluidas.length)}}</h5>
 	<button onclick="mudarCor()">random color</button>
 	<button onclick="mudarFonte()">random font</button>
 	<button ng-click="zerarListas()">clear lists</button>
